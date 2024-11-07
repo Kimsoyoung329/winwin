@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>윈윈마켓</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome 아이콘 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="nav-logo">윈윈마켓</div>
+        <div class="nav-items">
+            <a href="#" class="nav-item active" onclick="showSection('home')">
+                <i class="fas fa-home"></i> 홈
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('search')">
+                <i class="fas fa-search"></i> 검색
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('write')">
+                <i class="fas fa-pen"></i> 글쓰기
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('mypage')">
+                <i class="fas fa-user"></i> 마이페이지
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 홈 섹션 -->
+        <section id="home" class="section">
+            <div class="gallery">
+                <!-- 자바스크립트로 동적 생성됨 -->
+            </div>
+        </section>
+
+        <!-- 검색 섹션 -->
+        <section id="search" class="section hidden">
+            <div class="search-area">
+                <select id="searchType">
+                    <option value="location">위치</option>
+                    <option value="haveItem">가진 굿즈</option>
+                    <option value="wantItem">원하는 굿즈</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+                <button onclick="searchPosts()">검색</button>
+            </div>
+            <div id="searchResults" class="gallery">
+                <!-- 검색 결과가 여기에 표시됨 -->
+            </div>
+        </section>
+
+        <!-- 글쓰기 섹션 -->
+        <section id="write" class="section hidden">
+            <div class="post-form">
+                <h2>교환글 작성하기</h2>
+                <form id="goodsForm">
+                    <input type="text" id="title" placeholder="제목" required>
+                    <input type="text" id="location" placeholder="위치" required>
+                    <input type="text" id="haveItem" placeholder="가지고 있는 굿즈" required>
+                    <input type="text" id="wantItem" placeholder="원하는 굿즈" required>
+                    <textarea id="description" placeholder="설명을 입력하세요" required></textarea>
+                    <input type="file" id="imageInput" accept="image/*" multiple>
+                    <button type="submit">등록하기</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 마이페이지 섹션 -->
+        <section id="mypage" class="section hidden">
+            <div class="mypage-container">
+                <div class="my-posts">
+                    <h3>내가 쓴 글</h3>
+                    <div class="gallery" id="myPosts">
+                        <!-- 내가 쓴 글이 여기에 표시됨 -->
+                    </div>
+                </div>
+                <div class="my-chats">
+                    <h3>채팅 목록</h3>
+                    <div class="chat-list" id="chatList">
+                        <!-- 채팅 목록이 여기에 표시됨 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 채팅창 -->
+    <div id="chatBox" class="chat-box hidden">
+        <div class="chat-header">
+            <span>채팅</span>
+            <button onclick="closeChat()">X</button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="메시지를 입력하세요">
+            <button onclick="sendMessage()">전송</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
